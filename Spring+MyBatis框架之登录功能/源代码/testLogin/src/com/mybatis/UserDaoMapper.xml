@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.UserDao">
+    <!-- 查询用户信息 -->
+    <select id="selectOneUser" resultType="com.po.UserInformation" parameterType="map">
+        <!-- #{}表示占位符，让其sql语句在执行前经过预编译处理过后，执行时使用的是编译完成后的sql语句，
+            因为SQL注入只能对编译过程起作用，所以这样的方式就很好地避免了SQL注入的问题 -->
+        select * from loginuser where account = #{account} and password = #{password}
+    </select>
+</mapper>
